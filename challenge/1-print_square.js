@@ -1,16 +1,17 @@
 #!/usr/bin/env node
+
 // 1-print_square.js
+// Script to print a square of size passed as argument
 
-// Komanda xəttindən ölçünü oxuyuruq
-const size = parseInt(process.argv[2]);
+// Get the size from command line argument and force base 10
+const size = parseInt(process.argv[2], 10);
 
-// Əgər ölçü düzgün deyilsə, xəbərdarlıq veririk
-if (isNaN(size) || size <= 0) {
-  console.log('Size must be a positive number');
-  process.exit(1);
+// If no argument or invalid size, do nothing
+if (!size || size <= 0) {
+  process.exit(0);
 }
 
-// Kvadratı çap edirik
+// Loop to print the square
 for (let i = 0; i < size; i++) {
   console.log('X'.repeat(size));
 }
