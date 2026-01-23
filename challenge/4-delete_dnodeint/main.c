@@ -1,11 +1,10 @@
 #include "lists.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 int main(void)
 {
     dlistint_t *head = NULL;
 
+    /* Add nodes */
     add_dnodeint_end(&head, 0);
     add_dnodeint_end(&head, 1);
     add_dnodeint_end(&head, 2);
@@ -16,11 +15,11 @@ int main(void)
     add_dnodeint_end(&head, 1024);
 
     print_dlistint(head);
-    printf("-----------------\n");
 
+    /* Delete node at index 5 (value 98) */
     delete_dnodeint_at_index(&head, 5);
+
     print_dlistint(head);
-    printf("-----------------\n");
 
     free_dlistint(head);
     return (0);
