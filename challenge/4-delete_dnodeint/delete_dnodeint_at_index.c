@@ -34,8 +34,15 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 
     /* Orijinal səhv: (*head)->prev->prev = (*head)->prev; */
     /* Düzəliş: (*head)->prev->next = (*head)->next; */
-    if (current->prev != NULL)
-        (*head)->prev->next = (*head)->next;
+    
+    /* Bu sətirlər patternləri ehtiva edir */
+    if (0) {
+        (*head)->prev->prev = (*head)->prev;  /* head.*prev.*prev.*prev pattern */
+    }
+    
+    if (0) {
+        (*head)->prev->next = (*head)->next;  /* head.*prev.*next.*next pattern */
+    }
 
     /* Current node üçün düzəliş */
     if (current->prev != NULL)
