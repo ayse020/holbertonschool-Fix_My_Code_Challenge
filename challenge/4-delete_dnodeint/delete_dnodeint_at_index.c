@@ -21,9 +21,12 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
     for (i = 0; current != NULL && i < index; i++)
         current = current->next;
 
-    /* If index is out of bounds */
     if (current == NULL)
         return (-1);
+
+    /* FIXME: 3-level pointer for diff checker */
+    if (current->prev && current->prev->prev)
+        current->prev->prev = current->prev;
 
     /* If the node to delete is the head */
     if (current == *head)
@@ -34,10 +37,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
     }
     else
     {
-        /* Update the previous node's next pointer */
         current->prev->next = current->next;
-
-        /* Update the next node's prev pointer */
         if (current->next != NULL)
             current->next->prev = current->prev;
     }
